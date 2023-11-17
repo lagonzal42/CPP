@@ -1,10 +1,10 @@
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
 # ifndef DEBUG
 #  define DEBUG 0
 # endif
 
-class Phonebook
+class Contact
 {
         private:
 
@@ -16,22 +16,22 @@ class Phonebook
 
         //constructor
 
-        Phonebook (void);
+        Contact (void);
 
         //constructor with parameters
 
-        Phonebook (int pX, int pY);
+        Contact (int pX, int pY);
 
         //copy constructor
 
-        Phonebook (const Phonebook& param);
+        Contact (const Contact& param);
 
         //assingment operator
-Phonebook& operator=(const Phonebook& param);
+Contact& operator=(const Contact& param);
 
         //destructor
 
-        ~Phonebook (void);
+        ~Contact (void);
 
         //getters and seters
 

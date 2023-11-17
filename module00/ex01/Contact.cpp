@@ -1,29 +1,29 @@
-#include "Phonebook.hpp"
+#include "Contact.hpp"
 #include <iostream>
 
 //default constructor
 
-Phonebook::Phonebook(void)
+Contact::Contact(void)
 {
         std::cout << "Default constructor called" << std::endl;
 }
 
 //constructor with parameters
 
-Phonebook::Phonebook(int pX, int pY) : x(pX), y(pY)
+Contact::Contact(int pX, int pY) : x(pX), y(pY)
 {
         std::cout << "Parameter constructor called" << std::endl;
         return;
 }
 
 //copy constructor
-Phonebook::Phonebook(const Phonebook& param) : x(param.x), y(param.y)
+Contact::Contact(const Contact& param) : x(param.x), y(param.y)
 {
         std::cout << "Copy constructor called" << std::endl;
         return;
 }
 
- Phonebook& Phonebook::operator=(const Phonebook& param)
+ Contact& Contact::operator=(const Contact& param)
 {
         std::cout << "= operator overwriting method called" << std::endl;
         if (this != &param)
@@ -36,7 +36,7 @@ Phonebook::Phonebook(const Phonebook& param) : x(param.x), y(param.y)
 
 //default destructor
 
-Phonebook::~Phonebook(void)
+Contact::~Contact(void)
 {
         std::cout << "Default destructor called" << std::endl;
 }
