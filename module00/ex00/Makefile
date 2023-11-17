@@ -10,3 +10,9 @@ all: $(NAME)
 
 $(NAME): $(SRCS)
 	$(CC) $(CFLAGS) $(SRCS) -o $(NAME)
+
+clean:
+	rm -fr $(OBJS)
+fclean: clean
+	rm -fr $(NAME)
+re: fclean all

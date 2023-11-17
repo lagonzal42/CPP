@@ -4,36 +4,52 @@
 #  define DEBUG 0
 # endif
 
+#include <iostream>
+#include <string>
+
 class Contact
 {
-        private:
+	private:
 
-        //private atributes
-                int x;
-                int y;
+	//private atributes
+		std::string		firstName;
+		std::string		lastName;
+		std::string		nickname;
+		unsigned int	phoneNumber;
+		std::string		darkestSecret;
 
-        public:
+	public:
 
-        //constructor
+	//constructor
 
-        Contact (void);
+	Contact (void);
 
-        //constructor with parameters
+	//constructor with parameters
 
-        Contact (int pX, int pY);
+	Contact(std::string pFirstName, std::string pLastName, std::string pNickname, 
+		unsigned int phoneNumber, std::string pDarkestSecret);
 
-        //copy constructor
+	//copy constructor
 
-        Contact (const Contact& param);
+	Contact (const Contact& param);
 
-        //assingment operator
-Contact& operator=(const Contact& param);
+	//assingment operator
+	Contact& operator=(const Contact& param);
 
-        //destructor
+	//destructor
 
-        ~Contact (void);
+	~Contact (void);
 
-        //getters and seters
+	//getters and seters
+	
+	std::string	getFirstName(void);
+	std::string	getLastName(void);
+	std::string	getNickname(void);
+
+	//other methods
+	
+	void	print(void);
 
 };
+
 #endif

@@ -1,10 +1,10 @@
-NAME = prueba
+NAME = nokia3310
 
 CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = Phonebook.cpp main.cpp
+SRCS = Phonebook.cpp main.cpp Contact.cpp
 
 DEBUG = -D DEBUG=1
 

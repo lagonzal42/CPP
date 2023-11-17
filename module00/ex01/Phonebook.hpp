@@ -3,37 +3,48 @@
 # ifndef DEBUG
 #  define DEBUG 0
 # endif
+# include "Contact.hpp"
+# include <string>
 
 class Phonebook
 {
-        private:
+	private:
 
-        //private atributes
-                int x;
-                int y;
+	//private atributes
+		static const int	ARRAY_SIZE = 8;
+		Contact				contactList[ARRAY_SIZE];
+		int					contactCount;
 
-        public:
+	public:
 
-        //constructor
+	//constructor
 
-        Phonebook (void);
+	Phonebook (void);
 
-        //constructor with parameters
+	//copy constructor
 
-        Phonebook (int pX, int pY);
+	Phonebook (const Phonebook& param);
 
-        //copy constructor
+	//assingment operator
+	Phonebook& operator=(const Phonebook& param);
 
-        Phonebook (const Phonebook& param);
+	//destructor
 
-        //assingment operator
-Phonebook& operator=(const Phonebook& param);
+	~Phonebook (void);
 
-        //destructor
+	//getters and seters
 
-        ~Phonebook (void);
+	int	getContactCount(void);
 
-        //getters and seters
+	//other methods
+	void	print(void);
 
+	//mandatory
+	void		add(void);
+	std::string	check_input(void);
+	void		addBack(Contact pContact);
+	void		moveForward(Contact pContact);
+	void		search(void);
+	std::string	trimmer(std::string);
 };
 #endif
