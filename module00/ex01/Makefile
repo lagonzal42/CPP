@@ -6,18 +6,25 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS = Phonebook.cpp main.cpp Contact.cpp
 
+OBJS = $(SRCS:.cpp=.o)
+OBJS := $(addprefix obj/, $(OBJS))
+
 DEBUG = -D DEBUG=1
 
 all: $(NAME)
 
-$(NAME): $(SRCS)
-	$(CC) $(CFLAGS) $(SRCS) -o $(NAME)
+obj/%.o:%.cpp
+	mkdir -p obj
+	$(CC) -c $(CFLAGS) $< -o $@
+
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 debug: CFLAGS += -D DEBUG=1
 debug: $(NAME)
 
 clean:
-	@rm -fr *.o
+	@rm -fr obj
 fclean: clean
 	@rm -fr $(NAME)
 re: clean fclean $(NAME)

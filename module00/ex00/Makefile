@@ -6,13 +6,20 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS = megaphone.cpp
 
+OBJS = $(SRCS:.cpp=.o)
+OBJS := $(addprefix obj/, $(OBJS))
+
 all: $(NAME)
 
-$(NAME): $(SRCS)
-	$(CC) $(CFLAGS) $(SRCS) -o $(NAME)
+obj/%.o:%.cpp
+	mkdir obj
+	$(CC) -c $(CFLAGS) $< -o $@
+
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 clean:
-	rm -fr $(OBJS)
+	rm -fr obj
 fclean: clean
 	rm -fr $(NAME)
 re: fclean all
