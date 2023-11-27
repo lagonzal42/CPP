@@ -35,7 +35,9 @@ Account::Account(int initial_deposit)
 	_nbDeposits = 0;
 	_nbWithdrawals = 0;
 }
+
 Account::~Account(void)
 {
-	_totalAmount -= _amount
+	_totalAmount -= _amount;
 }
+
