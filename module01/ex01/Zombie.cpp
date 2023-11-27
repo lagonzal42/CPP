@@ -4,7 +4,6 @@ Zombie::Zombie(void)
 {
     if (DEBUG)
         std::cout << "Default constructor called, default name is def" << std::endl;
-    name = "def";
 }
 
 Zombie::Zombie(std::string pName)
@@ -25,6 +24,11 @@ Zombie::~Zombie(void)
 std::string Zombie::getName(void)
 {
     return (name);
+}
+
+void    Zombie::setName(std::string pName)
+{
+    name = pName;
 }
 
 void    Zombie::anounce(void)
