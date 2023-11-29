@@ -14,8 +14,10 @@ Phonebook::Phonebook(void)
 
 //copy constructor
 
-Phonebook::Phonebook(const Phonebook& param) : contactList(param.contactList), contactCount(param.contactCount)
+Phonebook::Phonebook(const Phonebook& param): contactCount(param.contactCount)
 {
+	for (int i = 0; i < param.contactCount; i++)
+			this->contactList[i] = param.contactList[i];
 	if (DEBUG)
 		std::cout << "Copy constructor called" << std::endl;
 }
@@ -72,6 +74,11 @@ void	Phonebook::add(void)
 	nickname = check_input();
 	std::cout << "Introduce the phone number" << std::endl;
 	phoneNumber = std::atoi(check_input().c_str());
+	while (phoneNumber == 0)
+	{
+		std::cout << "Introduce the phone number" << std::endl;
+		phoneNumber = std::atoi(check_input().c_str());
+	}
 	std::cout << "Introduce the darkest secret" << std::endl;
 	darkestSecret = check_input();
 	if (contactCount < ARRAY_SIZE)
