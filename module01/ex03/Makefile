@@ -1,8 +1,8 @@
-NAME = BRAIN
+NAME = Unnecesary_violence
 
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g3
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g3 -pedantic
 
 SRCS = main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
 
@@ -19,7 +19,7 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 debug: CFLAGS += -D DEBUG=1
-debug: $(NAME)
+debug: fclean $(NAME)
 
 clean:
 	@rm -fr obj

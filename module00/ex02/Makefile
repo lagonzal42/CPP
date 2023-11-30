@@ -2,7 +2,7 @@ NAME = bank
 
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 
 SRCS = Account.cpp tests.cpp
 

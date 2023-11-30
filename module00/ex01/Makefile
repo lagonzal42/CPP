@@ -2,7 +2,7 @@ NAME = nokia3310
 
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 
 SRCS = Phonebook.cpp main.cpp Contact.cpp
 

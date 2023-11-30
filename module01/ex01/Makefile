@@ -2,7 +2,7 @@ NAME = Zombies
 
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g3
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g3 -pedantic
 
 SRCS = main.cpp
 
