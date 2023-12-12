@@ -1,40 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lagonzal <larraingonzalez@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/10 21:38:15 by lagonzal          #+#    #+#             */
-/*   Updated: 2023/12/10 21:38:15 by lagonzal         ###   ########.fr       */
+/*   Created: 2023/12/10 21:38:28 by lagonzal          #+#    #+#             */
+/*   Updated: 2023/12/10 21:38:28 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL_HPP
-# define HARL_HPP
+#ifndef FIXED_HPP
+# define FIXED_HPP
 
 # ifndef DEBUG
 #  define DEBUG 0
 # endif
 
-#include <string>
-
-class Harl
+class Fixed
 {
 	private:
 
-		static std::string _options[4];
+		int _value;
+		static const int fractional = 8;
 
-		void	_debug(void);
-		void	_info(void);
-		void	_warning(void);
-		void	_error(void);
-	
-	public:	
-		
-		Harl(void);
-		~Harl(void);
-		void	complain(std::string level);
+	public:
+		//default constructor
+		Fixed(void);
+		//default destructor
+		~Fixed(void);
+		//copy constructor
+		Fixed(Fixed& original);
+		// = operator overload
+		Fixed&	operator=(const Fixed& param);
+
+		//Geters and seters
+		int		getRawBits(void)const;
+		void	setRawBits(int const raw);
+
+
 };
 
-#endif //HARL_HPP
+
+
+#endif

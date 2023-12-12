@@ -5,18 +5,18 @@
 #                                                     +:+ +:+         +:+      #
 #    By: lagonzal <larraingonzalez@gmail.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/12/10 21:37:33 by lagonzal          #+#    #+#              #
-#    Updated: 2023/12/10 21:37:33 by lagonzal         ###   ########.fr        #
+#    Created: 2023/12/10 21:38:32 by lagonzal          #+#    #+#              #
+#    Updated: 2023/12/10 21:38:32 by lagonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Unnecesary_violence
+NAME = ex00
 
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g3 -pedantic
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 
-SRCS = main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
+SRCS = main.cpp Fixed.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 OBJS := $(addprefix obj/, $(OBJS))
@@ -31,7 +31,7 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 debug: CFLAGS += -D DEBUG=1
-debug: fclean $(NAME)
+debug: $(NAME)
 
 clean:
 	@rm -fr obj
