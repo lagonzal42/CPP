@@ -26,7 +26,7 @@ Fixed::~Fixed(void)
 		std::cout << "Default destructor called" << std::endl;
 }
 
-Fixed::Fixed(Fixed& original)
+Fixed::Fixed(const Fixed& original)
 {
 	if (DEBUG)
         std::cout << "Copy constructor called" << std::endl;

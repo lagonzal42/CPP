@@ -42,7 +42,7 @@ Fixed::Fixed(float value)
 	_value = roundf(value * (1 << _fractional));
 }
 
-Fixed::Fixed(Fixed& original)
+Fixed::Fixed(const Fixed& original)
 {
 	if (DEBUG)
         std::cout << "Copy constructor called" << std::endl;

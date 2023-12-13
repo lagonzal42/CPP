@@ -30,7 +30,7 @@ class Fixed
 		//default destructor
 		~Fixed(void);
 		//copy constructor
-		Fixed(Fixed& original);
+		Fixed(const Fixed& original);
 		// = operator overload
 		Fixed&	operator=(const Fixed& param);
 

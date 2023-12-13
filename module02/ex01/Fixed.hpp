@@ -34,7 +34,7 @@ class Fixed
 		//float value constructor
 		Fixed(float value);
 		//copy constructor
-		Fixed(Fixed& original);
+		Fixed(const Fixed& original);
 		// = operator overload
 		Fixed&	operator=(const Fixed& param);
 
