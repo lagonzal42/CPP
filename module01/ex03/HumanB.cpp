@@ -37,5 +37,5 @@ void    HumanB::attack(void)
     if (_weapon == NULL)
         std::cout << "HumanB attacked without a weapon" << std::endl;
     else
-        std::cout << "HumanB attacked with a" << _weapon->getType() << std::endl;
+        std::cout << "HumanB attacked with " << _weapon->getType() << std::endl;
 }

@@ -13,7 +13,7 @@
 #include "HumanA.hpp"
 #include <iostream>
 
-HumanA::HumanA(std::string pName, Weapon& pWeapon) :  _name(pName), _weapon(&pWeapon)
+HumanA::HumanA(std::string pName, Weapon& pWeapon) :  _name(pName), _weapon(pWeapon)
 {
 	if (DEBUG)
 		std::cout << "HumanA constructor called" << std::endl;
@@ -27,5 +27,5 @@ HumanA::~HumanA(void)
 
 void	HumanA::attack(void)
 {
-	std::cout << "HumanA attacked with " << _weapon->getType() << std::endl;
+	std::cout << "HumanA attacked with " << _weapon.getType() << std::endl;
 }

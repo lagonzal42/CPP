@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagonzal <larraingonzalez@gmail.com>       +#+  +:+       +#+        */
+/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 21:36:05 by lagonzal          #+#    #+#             */
-/*   Updated: 2023/12/10 21:36:05 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/12/13 20:38:17 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	Phonebook::add(void)
 	std::cout << "Introduce the nickname" << std::endl;
 	nickname = check_input();
 	std::cout << "Introduce the phone number" << std::endl;
-	phoneNumber = std::atoi(check_input().c_str());
+	phoneNumber = check_phone();
 	while (phoneNumber == 0)
 	{
 		std::cout << "Introduce the phone number" << std::endl;
@@ -103,10 +103,53 @@ std::string Phonebook::check_input(void)
 {
 	std::string input;
 
-	std::cin >> input;
-	while (input.empty())
-		std::cout << "The field cannot be empty, try again" << std::endl;
+	std::getline(std::cin, input);
+	while (1)
+	{
+		if (!(input).empty())
+			break;
+		else
+		{
+			std::cout << "The field cannot be empty" << std::endl;
+			std::getline(std::cin, input);
+		}
+	}
 	return (input);
+}
+
+unsigned int Phonebook::check_phone(void)
+{
+	std::string 	input;
+	int	phone;
+
+	std::getline(std::cin, input);
+	while (1)
+	{
+		if (!input.empty() && isnumeric(input))
+			break;
+		else
+		{
+			std::cout << "The field cannot be empty or has characters" << std::endl;
+			std::getline(std::cin, input);
+		}
+	}
+	phone = std::atoi(input.c_str());
+	if (phone < 1)
+	{
+		std::cout << "The input cannot be below or equal to zero" << std::endl;
+		return (0);
+	}
+	return (phone);
+}
+
+bool	Phonebook::isnumeric(std::string str)
+{
+	for (int x = 0; (unsigned long) x < str.length(); x++)
+	{
+		if (!std::isdigit(str[x]))
+			return (false);
+	}
+	return (true);
 }
 
 void	Phonebook::addBack(Contact pContact)
@@ -126,8 +169,14 @@ void	Phonebook::moveForward(Contact pContact)
 void	Phonebook::search(void)
 {
 	std::string	trimmed;
+	std::string	in_str;
 	int	input;
 
+	if (contactCount == 0)
+	{
+		std::cout << "There are no contacts available" << std::endl;
+		return ;
+	}
 	for (int i = 0; i < contactCount; i++)
 	{
 		std::cout << "|" << std::setw(10) << i;
@@ -138,8 +187,9 @@ void	Phonebook::search(void)
 		trimmed = contactList[i].getNickname();
 		std::cout << "|" << std::setw(10) << trimmer(trimmed) << "|" << std::endl;
 	}
-	input = std::atoi(check_input().c_str());;
-	if (input > 7 || input < 0)
+	std::getline(std::cin, in_str);
+	input = std::atoi(in_str.c_str());
+	if (input > 7 || input < 0 || input >= contactCount - 1)
 		std::cout << "Invalid input" << std::endl;
 	else
 		contactList[input].print();

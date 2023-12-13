@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Phonebook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagonzal <larraingonzalez@gmail.com>       +#+  +:+       +#+        */
+/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 21:36:08 by lagonzal          #+#    #+#             */
-/*   Updated: 2023/12/10 21:36:08 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/12/13 20:20:26 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,13 @@ class Phonebook
 	void	print(void);
 
 	//mandatory
-	void		add(void);
-	std::string	check_input(void);
-	void		addBack(Contact pContact);
-	void		moveForward(Contact pContact);
-	void		search(void);
-	std::string	trimmer(std::string);
+	void			add(void);
+	std::string		check_input(void);
+	unsigned int	check_phone(void);
+	bool			isnumeric(std::string);
+	void			addBack(Contact pContact);
+	void			moveForward(Contact pContact);
+	void			search(void);
+	std::string		trimmer(std::string);
 };
 #endif

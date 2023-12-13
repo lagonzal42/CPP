@@ -23,16 +23,15 @@ int	main(void)
 	while (1)
 	{
 		std::cout << "What do you want to do?" << std::endl;
-		std::cin >> input;
+		std::getline(std::cin, input);
 		if (input == "ADD")
 			my_phonebook.add();
 		else if (input == "SEARCH")
 			my_phonebook.search();
-		else if (input == "EXIT")
+		else if (input == "EXIT" || input.empty())
 			break ;
 		else
 			std::cout << "Invalid input. Please try again" << std::endl;
 	}
-
 	return (0);
 }

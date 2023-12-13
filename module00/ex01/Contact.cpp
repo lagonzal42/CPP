@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagonzal <larraingonzalez@gmail.com>       +#+  +:+       +#+        */
+/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 21:35:50 by lagonzal          #+#    #+#             */
-/*   Updated: 2023/12/10 21:35:50 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/12/13 20:30:48 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,6 @@ void	Contact::print(void)
 	std::cout << "Contact first name: " << firstName << std::endl;
 	std::cout << "last name" << std::endl;
 	std::cout << "Nickname: " << nickname << std::endl;
-	std::cout << "Phone number" << phoneNumber << std::endl;
+	std::cout << "Phone number: " << phoneNumber << std::endl;
 	std::cout << "Darkest secret: " << darkestSecret << std::endl;
 }
