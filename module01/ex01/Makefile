@@ -16,7 +16,7 @@ CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g3 -pedantic
 
-SRCS = main.cpp
+SRCS = main.cpp Zombie.cpp zombieHorde.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 OBJS := $(addprefix obj/, $(OBJS))

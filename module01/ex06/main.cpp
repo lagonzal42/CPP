@@ -15,10 +15,10 @@
 
 int main(int argc, char **argv)
 {
-    Harl    Karen;
+	Harl	Karen;
 
-    if (argc != 2)
-        std::cout << "Expected an argument" << std::endl;
-    else
-        Karen.complain(argv[1]);
+	if (argc != 2)
+		std::cout << "[Probably complaining about insignificant problems]" << std::endl;
+	else
+		Karen.complain(argv[1]);
 }

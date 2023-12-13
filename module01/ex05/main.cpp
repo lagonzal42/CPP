@@ -20,12 +20,12 @@ int main(void)
 
 	std::cout << "options are:  DEBUG, INFO, WARNING, ERROR" << std::endl;
 	std::cout << "What do you want karen to do?" << std::endl;
-	std::cin >> input;
-	while (input.compare("EXIT"))
+	std::getline(std::cin, input);
+	while (!(input.empty()) && input.compare("EXIT"))
 	{
 		karen.complain(input);
 		std::cout << "options are:  DEBUG, INFO, WARNING, ERROR" << std::endl;
 		std::cout << "What do you want karen to do?" << std::endl;
-		std::cin >> input;
+		std::getline(std::cin, input);
 	}
 }
