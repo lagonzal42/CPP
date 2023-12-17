@@ -140,37 +140,51 @@ int	Fixed::operator/(const Fixed& param)
 
 // preincrement/postincrement operator overload
 
-void	Fixed::operator++(void)
+Fixed&	Fixed::operator++(void)
 {
 	if (DEBUG)
 		std::cout << "preincrement operator called" << std::endl;
 	this->_value++;
+	return (*this);
 }
 
-void	Fixed::operator++(int post)
+Fixed	Fixed::operator++(int)
 {
+	Fixed	old = *this;;
+
 	if (DEBUG)
 		std::cout << "postincrement operator called" << std::endl;
-	post = 0;
 	this->_value++;
+	return (old);
 }
 
 // predecrement/postdecrement operator overload
 
-void	Fixed::operator--(void)
+Fixed&	Fixed::operator--(void)
 {
 	if (DEBUG)
 		std::cout << "predecrement operator called" << std::endl;
 	this->_value--;
+	return (*this);
 }
 
-void	Fixed::operator--(int post)
+Fixed	Fixed::operator--(int)
 {
+	Fixed old = *this;
+	
 	if (DEBUG)
 		std::cout << "postdecrement operator called" << std::endl;
-	post = 0;
 	this->_value--;
+	return (old);
 }
+
+// stream output operator overload
+std::ostream&	operator<<(std::ostream& os, const Fixed& parameter)
+{
+	os << "The fixed number is " << parameter.toFloat() << " as float and " << parameter.toInt() << " as int" << std::endl;
+	return (os);
+}
+		
 
 int	Fixed::toInt(void) const
 {
@@ -194,5 +208,33 @@ void	Fixed::setRawBits(int const raw)
 	if (DEBUG)
         std::cout << "setRawBits member fucntion called" << std::endl;
 	this->_value = raw;
+}
+
+// max and min functions
+static Fixed&	min(Fixed& p1, Fixed& p2)
+{
+	if (p1 < p2)
+		return (p1);
+	return (p2);
+}
+
+static const Fixed&	min(const Fixed& p1, const Fixed& p2)
+{
+	if ((Fixed) p1 < p2)
+		return (p1);
+	return (p2);
+}
+static Fixed&	max(Fixed& p1, Fixed& p2)
+{
+	if (p1 > p2)
+		return (p1);
+	return (p2);
+}
+
+static const Fixed&	max(const Fixed& p1, const Fixed& p2)
+{
+	if ((Fixed) p1 > p2)
+		return (p1);
+	return (p2);
 }
 

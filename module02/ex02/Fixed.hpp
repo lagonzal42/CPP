@@ -17,6 +17,8 @@
 #  define DEBUG 0
 # endif
 
+#include <ostream>
+
 class Fixed
 {
 	private:
@@ -58,20 +60,30 @@ class Fixed
 		int		operator/(const Fixed& param);
 
 		// preincrement/postincrement operator overload
-		void	operator++(void);
-		void	operator++(int post);
+		Fixed&	operator++(void);
+		Fixed	operator++(int);
 
 		// predecrement/postdecrement operator overload
-		void	operator--(void);
-		void	operator--(int post);
+		Fixed&	operator--(void);
+		Fixed	operator--(int);
 
-		//Other methods
+		// stream output operator overload
+		friend std::ostream&	operator<<(std::ostream& os, const Fixed& parameter);
+		
+		// Conversion operations
 		int		toInt(void) const;
 		float	toFloat(void) const;
 
 		//Geters and seters
 		int		getRawBits(void)const;
 		void	setRawBits(int const raw);
+
+		// max and min functions
+		static Fixed&	min(Fixed& p1, Fixed& p2);
+		static Fixed&	min(const Fixed& p1, const Fixed& p2);
+		static Fixed&	max(Fixed& p1, Fixed& p2);
+		static Fixed&	max(const Fixed& p1, const Fixed& p2);
 };
+
 
 #endif
