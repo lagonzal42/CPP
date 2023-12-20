@@ -13,6 +13,7 @@
 #include "Fixed.hpp"
 #include <iostream>
 #include <cmath>
+#include <iomanip>
 
 
 Fixed::Fixed(void)
@@ -102,12 +103,13 @@ bool	Fixed::operator==(const Fixed& param)
 
 // aritmetic operator overload
 
-float	Fixed::operator+(const Fixed& param)
+Fixed	Fixed::operator+(const Fixed& param)
 {
 	if (DEBUG)
 		std::cout << " + operator called" << std::endl;
-	return (this->toFloat() + param.toFloat());
-
+	Fixed sum = Fixed();
+	sum.setRawBits(param.getRawBits() + this->getRawBits());
+	return (sum);
 }
 
 float	Fixed::operator-(const Fixed& param)
@@ -176,7 +178,7 @@ Fixed	Fixed::operator--(int)
 // stream output operator overload
 std::ostream&	operator<<(std::ostream& os, const Fixed& parameter)
 {
-	os << "The fixed number is " << parameter.toFloat() << " as float and " << parameter.toInt() << " as int" << std::endl;
+	os << "The fixed number is " << std::setiosflags(std::ios::fixed) << std::setprecision(9) << parameter.toFloat() << " as float and " << parameter.toInt() << " as int" << std::endl;
 	return (os);
 }
 		
@@ -188,7 +190,8 @@ int	Fixed::toInt(void) const
 
 float	Fixed::toFloat(void) const
 {
-	return ((float) _value / (1 << _fractional));
+	float epsilon = 1.0f / (1 << (_fractional + 1));
+    return (static_cast<float>(_value) + epsilon) / (1 << _fractional);
 }
 
 int	Fixed::getRawBits(void) const

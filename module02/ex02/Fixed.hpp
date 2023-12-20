@@ -54,7 +54,7 @@ class Fixed
 		bool	operator!=(const Fixed& param);
 
 		// aritmetic operator overload
-		float		operator+(const Fixed& param);
+		Fixed		operator+(const Fixed& param);
 		float		operator-(const Fixed& param);
 		float		operator*(const Fixed& param);
 		float		operator/(const Fixed& param);

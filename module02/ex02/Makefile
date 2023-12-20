@@ -14,7 +14,7 @@ NAME = ex02
 
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic #-fsanitize=address -g3
 
 SRCS = main.cpp Fixed.cpp
 

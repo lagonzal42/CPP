@@ -24,5 +24,9 @@ int main( void )
     std::cout << Fixed::max(b, c) << std::endl;
     std::cout << Fixed::min(b, c) << std::endl;
     std::cout << d++ << std::endl;
+
+    Fixed   sumatory = Fixed(Fixed(123456.5f) + Fixed(654321.25f));
+    std::cout << "Sumatory is Fixed(123456.5) + Fixed(654321.25)\nExpected: 777777.75\nReal: " << sumatory << std::endl;
+    std::cout << "Raw bits are " << sumatory.getRawBits() << std::endl;
     return 0;
 }
