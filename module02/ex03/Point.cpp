@@ -72,8 +72,7 @@ bool	Point::bsp(const Point a, const Point b, const Point c, const Point point)
 	acp = Point::heron(a, c, point);
 	bcp = Point::heron(b, c, point);
 	abc = Point::heron(a, b, c);
-	if (abp == 0.0f || acp == 0.0f || bcp == 0.0f
-		|| abp + acp + bcp > abc)
+	if (abp == 0.0f || acp == 0.0f || bcp == 0.0f || abp + acp + bcp >= abc)
 		return (false);
 	else
 		return (true);

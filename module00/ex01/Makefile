@@ -14,7 +14,7 @@ DEBUG = -D DEBUG=1
 all: $(NAME)
 
 obj/%.o:%.cpp
-	mkdir -p obj
+	@mkdir -p obj
 	$(CC) -c $(CFLAGS) $< -o $@
 
 $(NAME): $(OBJS)
