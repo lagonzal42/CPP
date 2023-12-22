@@ -66,35 +66,44 @@ Fixed	Point::getY(void) const
 
 bool	Point::bsp(const Point a, const Point b, const Point c, const Point point)
 {
-	float abp, acp, bcp, abc;
+	Fixed abp, acp, bcp, abc, zero, subtriangles;
 
 	abp = Point::heron(a, b, point);
 	acp = Point::heron(a, c, point);
 	bcp = Point::heron(b, c, point);
 	abc = Point::heron(a, b, c);
-	if (abp == 0.0f || acp == 0.0f || bcp == 0.0f || abp + acp + bcp >= abc)
+	std::cout << "abp: " << abp << " acp: " << acp << " bcp: " << bcp << " abc: " << abc << "sum: " << abp + acp + bcp << std::endl;
+	zero = Fixed();
+	if (abp == zero || acp == zero || bcp == zero || abp + acp + bcp >= abc)
 		return (false);
 	else
 		return (true);
 }
 
-float	Point::heron(const Point a, const Point b, const Point c)
+Fixed	Point::heron(const Point a, const Point b, const Point c)
 {
-	float	ab, ac, bc;
-	float	semi;
-	float	area;
+	Fixed	ab, ac, bc;
+	Fixed	semi;
+	Fixed	temp, area;
 
 	ab = Point::distance(a, b);
 	ac = Point::distance(a, c);
 	bc = Point::distance(b, c);
-	semi = (ab + ac + bc) / 2;
-	area = std::sqrt(semi * (semi - ab) * (semi - ac) * (semi - bc));
+	semi = (ab + ac + bc) / Fixed(2);
+	std::cout << "semi is " << semi << " ab " << ab << " ac " << ac << " bc " << bc << std::endl;
+	temp = (semi * (semi - ab) * (semi - ac) * (semi - bc));
+	std::cout << "temp is: " << temp << std::endl;
+	area = Fixed(std::sqrt(temp.toFloat()));
 	return (area);
 }
 
-float	Point::distance(const Point a, const Point b)
+Fixed	Point::distance(const Point a, const Point b)
 {
-	float distance = std::sqrt(std::pow(a.getX().toFloat() - b.getX().toFloat(), 2)
-			+ std::pow(a.getY().toFloat() - b.getY().toFloat(), 2));
+	// float distance = std::sqrt(std::pow(a.getX().toFloat() - b.getX().toFloat(), 2)
+	// 		+ std::pow(a.getY().toFloat() - b.getY().toFloat(), 2));
+	Fixed distance;
+	
+	Fixed  fix_dis = ((a.getX() - b.getX()) * (a.getX() - b.getX()) + (a.getY() - b.getY()) * (a.getY() - b.getY()));
+	distance = Fixed(std::sqrt(fix_dis.toFloat())); 
 	return (distance);
 }

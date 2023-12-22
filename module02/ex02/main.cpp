@@ -28,5 +28,13 @@ int main( void )
     Fixed   sumatory = Fixed(Fixed(123456.5f) + Fixed(654321.25f));
     std::cout << "Sumatory is Fixed(123456.5) + Fixed(654321.25)\nExpected: 777777.75\nReal: " << sumatory << std::endl;
     std::cout << "Raw bits are " << sumatory.getRawBits() << std::endl;
+    Fixed   multyply = Fixed(Fixed(4) * Fixed(0.25f));
+    std::cout << "Multiplication is 4 * 0.25\nExpected: 1 Real: " << multyply << std::endl;
+    Fixed   divide = Fixed(Fixed(4) / Fixed(0.25f));
+    std::cout << "Multiplication is 4 / 0.25\nExpected: 16 Real: " << divide << std::endl;
+    Fixed   comparisson1 = Fixed(16);
+    Fixed   comparisson2 = Fixed(16.0f);
+    bool    comp = comparisson1 == divide;
+    std::cout << "16 == 16.0f? \nExpected 1 \nReal: " << comp << std::endl;
     return 0;
 }

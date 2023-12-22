@@ -55,9 +55,9 @@ class Fixed
 
 		// aritmetic operator overload
 		Fixed		operator+(const Fixed& param);
-		float		operator-(const Fixed& param);
-		float		operator*(const Fixed& param);
-		float		operator/(const Fixed& param);
+		Fixed		operator-(const Fixed& param);
+		Fixed		operator*(const Fixed& param);
+		Fixed		operator/(const Fixed& param);
 
 		// preincrement/postincrement operator overload
 		Fixed&	operator++(void);

@@ -44,8 +44,8 @@ class Point
 
 		// binary space partitioning
 		static bool		bsp(const Point a, const Point b, const Point c, const Point point);
-		static float	heron(const Point a, const Point b, const Point c);
-		static float	distance(const Point a, const Point b);
+		static Fixed	heron(const Point a, const Point b, const Point c);
+		static Fixed	distance(const Point a, const Point b);
 };
 
 

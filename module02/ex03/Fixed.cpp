@@ -61,15 +61,21 @@ Fixed&	Fixed::operator=(const Fixed& param)
 bool	Fixed::operator>(const Fixed& param)
 {
 	if (DEBUG)
-		std::cout << " > operator called" << std::endl; 
-	return (this->toFloat() > param.toFloat());
+		std::cout << " > operator called" << std::endl;
+	if ((this->_value & 0xfff0) > (param.getRawBits() & 0xfff0))
+		return (true);
+	else if ((this->_value & 0xfff0) < (param.getRawBits() & 0xfff0))
+		return (false);
+	else
+		return ((this->_value & 0x000f) > (param.getRawBits() & 0x000f));
 }
 
 bool	Fixed::operator<(const Fixed& param)
 {
 	if (DEBUG)
 		std::cout << " < operator called" << std::endl;
-	return (this->toFloat() < param.toFloat());
+	Fixed p1 = param;
+	return (p1 > *this);
 }
 
 bool	Fixed::operator>=(const Fixed& param)
@@ -90,47 +96,56 @@ bool	Fixed::operator!=(const Fixed& param)
 {
 	if (DEBUG)
 		std::cout << " != operator called" << std::endl;
-	return (this->toFloat() != param.toFloat());
+	return (this->_value != param.getRawBits());
 }
 
 bool	Fixed::operator==(const Fixed& param)
 {
 	if (DEBUG)
 		std::cout << " == operator called" << std::endl;
-	return (!(this->operator!=(param)));
+	return (!(*this != param));
 }
 
 // aritmetic operator overload
 
-float	Fixed::operator+(const Fixed& param)
+Fixed	Fixed::operator+(const Fixed& param)
 {
 	if (DEBUG)
 		std::cout << " + operator called" << std::endl;
-	return (this->toFloat() + param.toFloat());
-
+	Fixed sum = Fixed();
+	sum.setRawBits(param.getRawBits() + this->getRawBits());
+	return (sum);
 }
 
-float	Fixed::operator-(const Fixed& param)
+Fixed	Fixed::operator-(const Fixed& param)
 {
 	if (DEBUG)
 		std::cout << " - operator called" << std::endl;
-	return (this->toFloat() - param.toFloat());
-
+	Fixed sub = Fixed();
+	sub.setRawBits(this->getRawBits() - param.getRawBits());
+	return (sub);
 }
 
-float	Fixed::operator*(const Fixed& param)
+Fixed	Fixed::operator*(const Fixed& param)
 {
 	if (DEBUG)
 		std::cout << " * operator called" << std::endl;
-	return (this->toFloat() * param.toFloat());
-
+	Fixed mult;
+	mult.setRawBits((this->_value * param.getRawBits()) >> 8);
+	return (mult);
 }
 
-float	Fixed::operator/(const Fixed& param)
+Fixed	Fixed::operator/(const Fixed& param)
 {
 	if (DEBUG)
 		std::cout << " / operator called" << std::endl;
-	return (this->toFloat() / param.toFloat());
+	Fixed div;
+	if (param.getRawBits() == 0)
+		std::cerr << "Cannot divide by zero" << std::endl;
+	else
+		div.setRawBits((this->_value << 8) / param.getRawBits());
+	return (div);
+
 }
 
 // preincrement/postincrement operator overload
