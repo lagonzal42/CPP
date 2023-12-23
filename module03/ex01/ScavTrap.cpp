@@ -21,10 +21,13 @@ ScavTrap::ScavTrap(void)
 	this->setName("Larry"); 
 }
 
-ScavTrap::ScavTrap(std::string pName, int pHitPoints, int pEnergyPoints, int pAttackDamage)
-: ClapTrap::ClapTrap(pName, pHitPoints, pEnergyPoints, pAttackDamage)
+ScavTrap::ScavTrap(std::string pName)
+: ClapTrap::ClapTrap(pName)
 {
 	std::cout << "ScavTrap parameter constructor called" << std::endl;
+	this->setHitPoints(100);
+	this->setEnergyPoints(50);
+	this->setAttackDamage(20);
 }
 
 ScavTrap::~ScavTrap(void)
@@ -36,6 +39,20 @@ ScavTrap::ScavTrap(const ScavTrap& param)
 : ClapTrap::ClapTrap(param)
 {
 	std::cout << "ScavTrap copy constructor called" << std::endl;
+}
+
+ScavTrap& ScavTrap::operator=(const ScavTrap& param)
+{
+	std::cout << "ScavTrap assingment operator called" << std::endl;
+	if (this != &param)
+	{
+		this->setName(param.getName());
+		this->setHitPoints(param.getHitPoints());
+		this->setEnergyPoints(param.getEnergyPoints());
+		this->setAttackDamage(param.getAttackDamage());
+		
+	}
+	return (*this);	
 }
 
 void	ScavTrap::guardTheGate(void)

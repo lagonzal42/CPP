@@ -6,7 +6,7 @@
 /*   By: lagonzal <larraingonzalez@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 14:32:41 by lagonzal          #+#    #+#             */
-/*   Updated: 2023/12/23 14:30:24 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/12/23 16:36:07 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ class ClapTrap
 		ClapTrap(void);
 
 		// Parameter constructor
-		ClapTrap(std::string pName, int pHitPoints, int pEnergyPoints, int pAttackDamage);
+		ClapTrap(std::string pName);
 		
 		// Default destructor
 		~ClapTrap(void);

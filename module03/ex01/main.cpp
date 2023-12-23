@@ -6,7 +6,7 @@
 /*   By: lagonzal <larraingonzalez@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:15:42 by lagonzal          #+#    #+#             */
-/*   Updated: 2023/12/23 15:00:16 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/12/23 16:49:36 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int main(void)
 {
 	std::cout << "ClapTrap is gonna be created" << std::endl;
-	ClapTrap Roger("Roger", 10, 10, 0);
+	ClapTrap Roger("Roger");
 	std::cout << "ClapTrap is gonna attack" << std::endl;
 	Roger.attack("Corrector");
 	std::cout << "ScavTrap is gonna be created" << std::endl;

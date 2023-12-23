@@ -21,7 +21,7 @@ class ScavTrap : public ClapTrap
         ScavTrap(void);
 
         //parameter constructor
-        ScavTrap(std::string pName, int pHitPoints, int pEnergyPoints, int pAttackDamage);
+        ScavTrap(std::string pName);
         
         //Default destructor
         ~ScavTrap(void);
@@ -29,8 +29,8 @@ class ScavTrap : public ClapTrap
         //Copy constructor
         ScavTrap(const ScavTrap& param);
     
-        // // = operator overload
-        // ScavTrap&   operator=(const ScavTrap& param);
+        // = operator overload
+        ScavTrap&   operator=(const ScavTrap& param);
 
         //mandatory method
         void        guardTheGate(void);

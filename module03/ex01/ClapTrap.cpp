@@ -6,7 +6,7 @@
 /*   By: lagonzal <larraingonzalez@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 14:41:19 by lagonzal          #+#    #+#             */
-/*   Updated: 2023/12/23 14:41:50 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/12/23 16:39:20 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ ClapTrap::ClapTrap(void)
 	this->energyPoints = 10;
 }
 
-ClapTrap::ClapTrap(std::string pName, int pHitPoints, int pEnergyPoints, int pAttackDamage)
-	: name(pName) , hitPoints(pHitPoints), energyPoints(pEnergyPoints), attackDamage(pAttackDamage)
+ClapTrap::ClapTrap(std::string pName)
+	: name(pName) , hitPoints(10), energyPoints(10), attackDamage(0)
 {
 		std::cout << "ClapTrap parameter constructor called" << std::endl;
 }
@@ -47,7 +47,7 @@ ClapTrap&	ClapTrap::operator=(const ClapTrap& param)
 		name = param.getName();
 		hitPoints = param.getHitPoints();
 		energyPoints = param.getEnergyPoints();
-		attackDamage = 0;
+		attackDamage = param.getAttackDamage();
 		
 	}
 	return (*this);
