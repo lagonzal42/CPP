@@ -6,22 +6,29 @@
 /*   By: lagonzal <larraingonzalez@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 14:41:19 by lagonzal          #+#    #+#             */
-/*   Updated: 2023/12/23 13:59:32 by lagonzal         ###   ########.fr       */
+/*   Updated: 2023/12/23 14:41:50 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(std::string pName)
-	: name(pName) , hitPoints(10), energyPoints(10), attackDamage(0)
+ClapTrap::ClapTrap(void)
 {
-	if (DEBUG)
-		std::cout << "ClapTrap constructor called" << std::endl;
+	std::cout << "ClapTrap default constructor called" << std::endl;
+	this->name = "Larry";
+	this->hitPoints = 10;
+	this->attackDamage = 0;
+	this->energyPoints = 10;
+}
+
+ClapTrap::ClapTrap(std::string pName, int pHitPoints, int pEnergyPoints, int pAttackDamage)
+	: name(pName) , hitPoints(pHitPoints), energyPoints(pEnergyPoints), attackDamage(pAttackDamage)
+{
+		std::cout << "ClapTrap parameter constructor called" << std::endl;
 }
 
 ClapTrap::~ClapTrap(void)
 {
-	if (DEBUG)
 		std::cout << "ClapTrap destructor called" << std::endl;	
 }
 
@@ -29,14 +36,12 @@ ClapTrap::ClapTrap(const ClapTrap& param)
 	: name(param.getName()), hitPoints(param.getHitPoints()), 
 	energyPoints(param.getEnergyPoints()), attackDamage(0) 
 {
-	if (DEBUG)
 		std::cout << "ClapTrap copy constructor called" << std::endl;		
 }
 
 ClapTrap&	ClapTrap::operator=(const ClapTrap& param)
 {
-	if (DEBUG)
-		std::cout << "ClapTrap assingment operator called" << std::endl;
+	std::cout << "ClapTrap assingment operator called" << std::endl;
 	if (this != &param)
 	{
 		name = param.getName();
@@ -85,17 +90,37 @@ std::string	ClapTrap::getName(void) const
 	return (name);
 }
 
-short int	ClapTrap::getHitPoints(void) const
+int	ClapTrap::getHitPoints(void) const
 {
 	return (hitPoints);
 }
 
-short int	ClapTrap::getEnergyPoints(void) const
+int	ClapTrap::getEnergyPoints(void) const
 {
 	return (energyPoints);
 }
 
-short int	ClapTrap::getAttackDamage(void) const
+int	ClapTrap::getAttackDamage(void) const
 {
 	return (attackDamage);
+}
+
+void	ClapTrap::setName(std::string pName)
+{
+	this->name = pName;
+}
+
+void	ClapTrap::setHitPoints(int pHitPoints)
+{
+	this->hitPoints = pHitPoints;
+}
+
+void	ClapTrap::setEnergyPoints(int pEnergyPoints)
+{
+	this->energyPoints = pEnergyPoints;
+}
+
+void	ClapTrap::setAttackDamage(int pAttackDamage)
+{
+	this->attackDamage = pAttackDamage;
 }
