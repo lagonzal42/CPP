@@ -14,7 +14,7 @@
 #ifndef SCAVTRAP_HPP
 # define SCAVTRAP_HPP
 
-class ScavTrap : public ClapTrap
+class ScavTrap : virtual public ClapTrap
 {
     public:
         //Default constructor
@@ -28,14 +28,10 @@ class ScavTrap : public ClapTrap
 
         //Copy constructor
         ScavTrap(const ScavTrap& param);
-    
-        // = operator overload
-        ScavTrap&   operator=(const ScavTrap& param);
 
         //mandatory method
         void        guardTheGate(void);
-        void	    attack(std::string objective);
-
+        void        attack(std::string objective);
 };
 
 #endif

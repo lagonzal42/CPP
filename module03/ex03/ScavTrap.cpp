@@ -41,20 +41,6 @@ ScavTrap::ScavTrap(const ScavTrap& param)
 	std::cout << "ScavTrap copy constructor called" << std::endl;
 }
 
-ScavTrap& ScavTrap::operator=(const ScavTrap& param)
-{
-	std::cout << "ScavTrap assingment operator called" << std::endl;
-	if (this != &param)
-	{
-		this->setName(param.getName());
-		this->setHitPoints(param.getHitPoints());
-		this->setEnergyPoints(param.getEnergyPoints());
-		this->setAttackDamage(param.getAttackDamage());
-		
-	}
-	return (*this);	
-}
-
 void	ScavTrap::guardTheGate(void)
 {
 	std::cout << "ScavTrap " << this->getName() << " is guarding the gate" << std::endl;
@@ -62,5 +48,5 @@ void	ScavTrap::guardTheGate(void)
 
 void	ScavTrap::attack(std::string objective)
 {
-	std::cout << "ScavTrap " << this->name << " attacks " << objective << " and causes " << this->attackDamage << std::endl;
+	std::cout << "ScavTrap " << this->name << " attacks " << objective << " and causes " << this->attackDamage << " points of damage" << std::endl;
 }

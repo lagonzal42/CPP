@@ -6,11 +6,11 @@
 #    By: lagonzal <larraingonzalez@gmail.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/20 15:20:36 by lagonzal          #+#    #+#              #
-#    Updated: 2023/12/23 14:47:54 by lagonzal         ###   ########.fr        #
+#    Updated: 2023/12/23 18:12:34 by lagonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ClapTrapTest
+NAME = ex01
 
 CC = c++
 
