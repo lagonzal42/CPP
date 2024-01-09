@@ -68,7 +68,6 @@ class Fixed
 		Fixed	operator--(int);
 
 		// stream output operator overload
-		friend std::ostream&	operator<<(std::ostream& os, const Fixed& parameter);
 		
 		// Conversion operations
 		int		toInt(void) const;
@@ -85,5 +84,6 @@ class Fixed
 		static const Fixed&	max(const Fixed& p1, const Fixed& p2);
 };
 
+std::ostream&	operator<<(std::ostream& os, const Fixed& parameter);
 
 #endif
