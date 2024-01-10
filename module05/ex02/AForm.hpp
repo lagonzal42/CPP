@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lagonzal <larraingonzalez@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_HPP
-# define FORM_HPP
+#ifndef AFORM_HPP
+# define AFORM_HPP
 
 #include <string>
 #include "Bureaucrat.hpp"
 
-class Form
+class AForm
 {
 	private:
 		const std::string	name;
@@ -25,29 +25,31 @@ class Form
 		const int			gradeToExec;
 	
 		//Constructor
-		Form(void);
+		AForm(void);
 
 	public:
 		//Parameter constructor
-		Form(std::string pName, int pGTS, int pGTE);
+		AForm(std::string pName, int pGTS, int pGTE);
 
 		//Copy constructor
-		Form(const Form& param);
+		AForm(const AForm& param);
 
 		//Destructor
-		~Form(void);
+		~AForm(void);
 
 		//assingment operator overload
-		Form&	operator=(const Form& param);
+		AForm&	operator=(const AForm& param);
 
 		//geters and setters
 		std::string	getName(void) const;
 		bool		getFS(void) const;
 		int			getGTS(void) const;
 		int			getGTE(void) const;
+		void		setFS(bool pFS);
 
 		//mandatory
-		void		beSigned(const Bureaucrat& signer);
+		void			beSigned(const Bureaucrat& signer);
+		virtual void	execute(const Bureaucrat& executor) const = 0;
 
 		//Exceptions
 		class GradeTooHighException : public std::exception
@@ -55,7 +57,7 @@ class Form
 			public:
 				const char*	what() const throw()
 				{
-					return ("Form::Grade is too high");
+					return ("AForm::Grade is too high");
 				}
 		};
 
@@ -64,12 +66,12 @@ class Form
 			public:
 				const char*	what() const throw()
 				{
-					return ("Form::Grade is too low");
+					return ("AForm::Grade is too low");
 				}
 		};
 };
 
 //<< override
-std::ostream&	operator<<(std::ostream& os, const Form& param);
+std::ostream&	operator<<(std::ostream& os, const AForm& param);
 
 #endif

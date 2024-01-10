@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 #include <iostream>
 
 Bureaucrat::Bureaucrat(void)
@@ -83,7 +83,7 @@ void	Bureaucrat::setGrade(int pGrade)
 	grade = pGrade;
 }
 
-void	Bureaucrat::signForm(Form& pForm)
+void	Bureaucrat::signForm(AForm& pForm)
 {
 	if (pForm.getFS())
 		std::cout << "Form is already signed" << std::endl;
@@ -93,15 +93,28 @@ void	Bureaucrat::signForm(Form& pForm)
 			pForm.beSigned(*this);
 			std::cout << "The form " << pForm.getName() << " has been signed by " << *this;
 		}
-		catch(Form::GradeTooLowException& e)
+		catch(AForm::GradeTooLowException& e)
 		{
 			std::cerr << e.what() << std::endl;
-			throw (Form::GradeTooLowException());
+			throw (AForm::GradeTooLowException());
 		}
+}
+
+void	Bureaucrat::executeForm(AForm& pForm)
+{
+	if (this->grade > pForm.getGTE())
+		throw (GradeTooLowException());
+	else if (!pForm.getFS())
+		std::cout << "Form isnt signed so it cant be executed" << std::endl;
+	else
+	{
+		pForm.execute(*this);
+		std::cout << *this << "executed" << pForm << std::endl;;
+	}
 }
 
 std::ostream&	operator<<(std::ostream& os, const Bureaucrat& param)
 {
-	os << param.getName() << ", bureaucrat grade " << param.getGrade() << std::endl;
+	os << param.getName() << ", bureaucrat grade " << param.getGrade();
 	return (os);
 }

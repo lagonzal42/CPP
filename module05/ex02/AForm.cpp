@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lagonzal <larraingonzalez@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,68 +10,73 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "AForm.hpp"
 #include <iostream>
 
-Form::Form(void)
+AForm::AForm(void)
 	: name("empty"), formSigned(false), gradeToSign(150), gradeToExec(150)
 {
 	if (DEBUG)
-		std::cout << "Form default constructor called" << std::endl;
+		std::cout << "AForm default constructor called" << std::endl;
 }
 
-Form::Form(std::string pName, int pGTS, int pGTE)
+AForm::AForm(std::string pName, int pGTS, int pGTE)
 	: name(pName), formSigned(false), gradeToSign(pGTS), gradeToExec(pGTE)
 {
 	if (pGTS > MIN_GRADE || pGTE > MIN_GRADE)
-		throw (Form::GradeTooLowException());
+		throw (AForm::GradeTooLowException());
 	if (pGTS < MAX_GRADE || pGTE < MAX_GRADE)
-		throw (Form::GradeTooHighException());
+		throw (AForm::GradeTooHighException());
 	if (DEBUG)
-		std::cout << "Form parameter constructor called" << std::endl;
+		std::cout << "AForm parameter constructor called" << std::endl;
 }
 
-Form::Form(const Form& param)
+AForm::AForm(const AForm& param)
 	: name(param.getName()), formSigned(param.getFS()), gradeToSign(param.getGTS()), gradeToExec(param.getGTE())
 {
 	if (DEBUG)
-		std::cout << "Form copy constructor called" << std::endl;
+		std::cout << "AForm copy constructor called" << std::endl;
 }
 
-Form::~Form(void)
+AForm::~AForm(void)
 {
 	if (DEBUG)
-		std::cout << "Form default destructor called" << std::endl;
+		std::cout << "AForm default destructor called" << std::endl;
 }
 
-Form&   Form::operator=(const Form& param)
+AForm&   AForm::operator=(const AForm& param)
 {
 	if (this != &param)
 		this->formSigned = param.getFS();
 	return (*this);
 }
 
-std::string Form::getName(void) const
+std::string AForm::getName(void) const
 {
 	return (name);
 }
 
-bool Form::getFS(void) const
+bool AForm::getFS(void) const
 {
 	return (formSigned);
 }
 
-int	Form::getGTS(void) const
+int	AForm::getGTS(void) const
 {
 	return (gradeToSign);
 }
 
-int	Form::getGTE(void) const
+int	AForm::getGTE(void) const
 {
 	return (gradeToExec);
 }
 
-void Form::beSigned(const Bureaucrat& signer)
+void AForm::setFS(bool pFS)
+{
+	this->formSigned = pFS;
+}
+
+void AForm::beSigned(const Bureaucrat& signer)
 {
 	if (this->gradeToSign < signer.getGrade())
 		throw (GradeTooLowException());
@@ -79,8 +84,8 @@ void Form::beSigned(const Bureaucrat& signer)
 		this->formSigned = true;
 }
 
-std::ostream&	operator<<(std::ostream& os, const Form& param)
+std::ostream&	operator<<(std::ostream& os, const AForm& param)
 {
-	os << "Form " << param.getName() << " grade to sign " << param.getGTS() << " grade to exec " << param.getGTE() << " is signed " << param.getFS() << std::endl;
+	os << "AForm " << param.getName() << " grade to sign " << param.getGTS() << " grade to exec " << param.getGTE() << " is signed " << param.getFS();
 	return (os);
 }

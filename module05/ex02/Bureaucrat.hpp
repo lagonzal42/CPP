@@ -1,61 +1,67 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lagonzal <larraingonzalez@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 15:56:34 by lagonzal          #+#    #+#             */
-/*   Updated: 2024/01/09 15:56:34 by lagonzal         ###   ########.fr       */
+/*   Created: 2024/01/08 17:54:47 by lagonzal          #+#    #+#             */
+/*   Updated: 2024/01/08 17:54:47 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_HPP
-# define FORM_HPP
+#ifndef BUREAUCRAT_HPP
+# define BUREAUCRAT_HPP
 
+#include <exception>
 #include <string>
-#include "Bureaucrat.hpp"
 
-class Form
+#define MIN_GRADE 150
+#define MAX_GRADE 1
+
+# ifndef DEBUG
+#  define DEBUG 0
+# endif
+
+class AForm;
+
+class Bureaucrat
 {
 	private:
 		const std::string	name;
-		bool				formSigned;
-		const int			gradeToSign;
-		const int			gradeToExec;
+		int 				grade;
 	
-		//Constructor
-		Form(void);
-
 	public:
-		//Parameter constructor
-		Form(std::string pName, int pGTS, int pGTE);
+		//Constructor
+		Bureaucrat();
 
-		//Copy constructor
-		Form(const Form& param);
+		//Parameter constructor
+		Bureaucrat(std::string pName, int pGrade);
+
+		//Copy Constructor
+		Bureaucrat(const Bureaucrat& param);
 
 		//Destructor
-		~Form(void);
+		~Bureaucrat();
 
-		//assingment operator overload
-		Form&	operator=(const Form& param);
+		//assingment operator
+		Bureaucrat& operator=(const Bureaucrat& param);
 
-		//geters and setters
+		//geters and seters
 		std::string	getName(void) const;
-		bool		getFS(void) const;
-		int			getGTS(void) const;
-		int			getGTE(void) const;
+		int			getGrade(void) const;
+		void		setGrade(int pGrade);
 
 		//mandatory
-		void		beSigned(const Bureaucrat& signer);
+		void		signForm(AForm& pForm);
+		void		executeForm(AForm& pForm);
 
-		//Exceptions
 		class GradeTooHighException : public std::exception
 		{
 			public:
 				const char*	what() const throw()
 				{
-					return ("Form::Grade is too high");
+					return ("Bureaucrat::Grade is too high");
 				}
 		};
 
@@ -64,12 +70,12 @@ class Form
 			public:
 				const char*	what() const throw()
 				{
-					return ("Form::Grade is too low");
+					return ("Bureaucrat::Grade is too low");
 				}
 		};
 };
 
 //<< override
-std::ostream&	operator<<(std::ostream& os, const Form& param);
+std::ostream&	operator<<(std::ostream& os, const Bureaucrat& parameter);
 
 #endif

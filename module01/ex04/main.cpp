@@ -23,8 +23,11 @@ int main(int argc, char **argv)
 {
 	if (DEBUG)
 		std::cout << "Argument number is " << argc << std::endl;
-	if (argc != 4)
+	if (argc != 4 || !argv[2][0] || !argv[3][0])
+	{
 		std::cout << "Incorrect number of parameters, expected 3, got " << argc - 1 << std::endl;
+		return (1);
+	}
 	
 	std::ifstream inFile(argv[1]);
 	std::ofstream outFile("outfile.txt");
