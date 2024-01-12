@@ -82,6 +82,22 @@ void	Bureaucrat::setGrade(int pGrade)
 	grade = pGrade;
 }
 
+void	Bureaucrat::increment(void)
+{
+	if (this->grade > 1)
+		this->grade--;
+	else
+		throw (Bureaucrat::GradeTooHighException());
+}
+
+void	Bureaucrat::decrement(void)
+{
+	if (this->grade < 150)
+		this->grade++;
+	else
+		throw (Bureaucrat::GradeTooLowException());
+}
+
 std::ostream&	operator<<(std::ostream& os, const Bureaucrat& param)
 {
 	os << param.getName() << ", bureaucrat grade " << param.getGrade() << std::endl;

@@ -50,6 +50,10 @@ class Bureaucrat
 		int			getGrade(void) const;
 		void		setGrade(int pGrade);
 
+		//mandatory
+		void		increment(void);
+		void		decrement(void);
+
 		class GradeTooHighException : public std::exception
 		{
 			public:

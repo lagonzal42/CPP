@@ -54,6 +54,8 @@ class Bureaucrat
 
 		//mandatory
 		void		signForm(Form& pForm);
+		void		increment(void);
+		void		decrement(void);
 
 		class GradeTooHighException : public std::exception
 		{
