@@ -32,6 +32,9 @@ class Point
 		// Parameter constructor
 		Point(float pX, float pY);
 
+		// Fixed constructor
+		Point(Fixed pX, Fixed pY);
+
 		// copy constructor
 		Point(const Point& pPoint);
 
@@ -46,6 +49,8 @@ class Point
 		static bool		bsp(const Point a, const Point b, const Point c, const Point point);
 		static Fixed	heron(const Point a, const Point b, const Point c);
 		static Fixed	distance(const Point a, const Point b);
+		static Point	vectorize(const Point a, const Point b);
+		static Fixed	det(const Point v1, const Point v2);
 };
 
 

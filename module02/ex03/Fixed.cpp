@@ -103,7 +103,7 @@ bool	Fixed::operator==(const Fixed& param)
 {
 	if (DEBUG)
 		std::cout << " == operator called" << std::endl;
-	return (!(*this != param));
+	return (this->_value == param.getRawBits());
 }
 
 // aritmetic operator overload

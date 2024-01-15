@@ -34,6 +34,14 @@ Point::Point(float pX, float pY)
 	_y = Fixed(pY);
 }
 
+Point::Point(Fixed pX, Fixed pY)
+{
+	if (DEBUG)
+		std::cout << "Parameter constructor called" <<std::endl;
+	_x = pX;
+	_y = pY;
+}
+
 Point::Point(const Point& pPoint)
 {
 	if (DEBUG)
@@ -66,18 +74,31 @@ Fixed	Point::getY(void) const
 
 bool	Point::bsp(const Point a, const Point b, const Point c, const Point point)
 {
-	Fixed abp, acp, bcp, abc, zero, subtriangles;
+	// Herons method
 
-	abp = Point::heron(a, b, point);
-	acp = Point::heron(a, c, point);
-	bcp = Point::heron(b, c, point);
-	abc = Point::heron(a, b, c);
-	std::cout << "abp: " << abp << " acp: " << acp << " bcp: " << bcp << " abc: " << abc << "sum: " << abp + acp + bcp << std::endl;
-	zero = Fixed();
-	if (abp == zero || acp == zero || bcp == zero || abp + acp + bcp >= abc)
-		return (false);
-	else
+	// Fixed abp, acp, bcp, abc, zero, subtriangles;
+
+	// abp = Point::heron(a, b, point);
+	// acp = Point::heron(a, c, point);
+	// bcp = Point::heron(b, c, point);
+	// abc = Point::heron(a, b, c);
+	// std::cout << "abp: " << abp << " acp: " << acp << " bcp: " << bcp << " abc: " << abc << "sum: " << abp + acp + bcp << std::endl;
+	// zero = Fixed();
+	// if (abp == zero || acp == zero || bcp == zero || abp + acp + bcp > abc)
+	// 	return (false);
+	// else
+	// 	return (true);
+
+	//Vectorial method
+	Fixed ka, kb;
+
+	ka = (a.getX() * (c.getY() - a.getY()) + (point.getY() - a.getY()) * (c.getX() - a.getX()) - point.getX() * (c.getY() - a.getY())) / ((b.getY() - a.getY()) * (c.getX() - a.getX()) - (b.getX() - a.getX()) * (c.getY() - a.getY()));
+	kb = (point.getY() - a.getY() - ka * (b.getY() - a.getY())) / (c.getY() - a.getY());
+
+	if (ka > 0 && kb > 0 && ka + kb < 1)
 		return (true);
+	else
+		return (false);
 }
 
 Fixed	Point::heron(const Point a, const Point b, const Point c)
@@ -106,4 +127,16 @@ Fixed	Point::distance(const Point a, const Point b)
 	Fixed  fix_dis = ((a.getX() - b.getX()) * (a.getX() - b.getX()) + (a.getY() - b.getY()) * (a.getY() - b.getY()));
 	distance = Fixed(std::sqrt(fix_dis.toFloat())); 
 	return (distance);
+}
+
+Point	Point::vectorize(const Point a, const Point b)
+{
+	Point vec(b.getX() - a.getX(), b.getY() - a.getY());
+
+	return (vec);
+}
+
+Fixed	Point::det(const Point u, const Point v)
+{
+	return ((u.getX() * v.getY()) - (u.getY() * v.getX()));
 }
