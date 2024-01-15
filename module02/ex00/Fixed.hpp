@@ -37,8 +37,6 @@ class Fixed
 		//Geters and seters
 		int		getRawBits(void)const;
 		void	setRawBits(int const raw);
-
-
 };
 
 
