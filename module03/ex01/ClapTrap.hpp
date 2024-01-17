@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagonzal <larraingonzalez@gmail.com>       +#+  +:+       +#+        */
+/*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 14:32:41 by lagonzal          #+#    #+#             */
-/*   Updated: 2023/12/23 16:36:07 by lagonzal         ###   ########.fr       */
+/*   Updated: 2024/01/17 19:55:16 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 class ClapTrap
 {
-	private:
+	protected:
 		
 		std::string	name;
 		int	hitPoints;
