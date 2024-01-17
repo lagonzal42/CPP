@@ -58,12 +58,12 @@ Fixed&	Fixed::operator=(const Fixed& param)
 	return (*this);
 }
 
-int	Fixed::toInt(void)
+int	Fixed::toInt(void) const
 {
 	return (_value >> 8);
 }
 
-float	Fixed::toFloat(void)
+float	Fixed::toFloat(void) const
 {
 	return ((float) _value / (1 << _fractional));
 }
@@ -80,5 +80,12 @@ void	Fixed::setRawBits(int const raw)
 	if (DEBUG)
         std::cout << "setRawBits member fucntion called" << std::endl;
 	this->_value = raw;
+}
+
+// stream output operator overload
+std::ostream&	operator<<(std::ostream& os, const Fixed& parameter)
+{
+	os << "The fixed number is " << parameter.toFloat() << " as float and " << parameter.toInt() << " as int" << std::endl;
+	return (os);
 }
 

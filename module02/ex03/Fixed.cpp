@@ -188,14 +188,6 @@ Fixed	Fixed::operator--(int)
 	return (old);
 }
 
-// stream output operator overload
-std::ostream&	operator<<(std::ostream& os, const Fixed& parameter)
-{
-	os << "The fixed number is " << parameter.toFloat() << " as float and " << parameter.toInt() << " as int" << std::endl;
-	return (os);
-}
-		
-
 int	Fixed::toInt(void) const
 {
 	return (_value >> 8);
@@ -249,3 +241,9 @@ const Fixed&	Fixed::max(const Fixed& p1, const Fixed& p2)
 	return (p2);
 }
 
+// stream output operator overload
+std::ostream&	operator<<(std::ostream& os, const Fixed& parameter)
+{
+	os << "The fixed number is " << parameter.toFloat() << " as float and " << parameter.toInt() << " as int" << std::endl;
+	return (os);
+}

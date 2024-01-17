@@ -63,6 +63,9 @@ bool	Fixed::operator>(const Fixed& param)
 {
 	if (DEBUG)
 		std::cout << " > operator called" << std::endl;
+	if (this->_value & 0x8000 == 0x8000)
+
+
 	if ((this->_value & 0xfff0) > (param.getRawBits() & 0xfff0))
 		return (true);
 	else if ((this->_value & 0xfff0) < (param.getRawBits() & 0xfff0))

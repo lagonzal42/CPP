@@ -39,8 +39,8 @@ class Fixed
 		Fixed&	operator=(const Fixed& param);
 
 		//Other methods
-		int		toInt(void);
-		float	toFloat(void);
+		int		toInt(void) const;
+		float	toFloat(void) const;
 
 		//Geters and seters
 		int		getRawBits(void)const;
@@ -48,5 +48,7 @@ class Fixed
 };
 
 
+// stream output operator overload
+std::ostream&	operator<<(std::ostream& os, const Fixed& parameter);
 
 #endif
