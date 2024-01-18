@@ -16,12 +16,21 @@
 
 int main()
 {
-    const Animal* j = new Dog();
-    const Animal* i = new Cat();
-    std::cout << j->getType() << " " << std::endl;
+    Dog* j = new Dog();
+    Animal *h = j;
+    Animal* i = new Cat();
+    std::cout << h->getType() << " " << std::endl;
     std::cout << i->getType() << " " << std::endl;
-    i->makeSound(); //will output the cat sound!
+    h->makeSound(); //will output the cat sound!
     j->makeSound();
+    std::cout << std::endl;
+    {
+        Animal* k = new Dog(*j);
+        k->getBrain()->setIdea("i want to eat", 0);
+        std::cout << k->getBrain()->getIdea(0) << std::endl;
+        std::cout << j->getBrain()->getIdea(0) << std::endl;
+    }
+    std::cout << std::endl;
 
     delete j;
     delete i;

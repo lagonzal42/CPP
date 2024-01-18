@@ -27,8 +27,14 @@ Cat::~Cat(void)
 
 }
 
-Cat::Cat(const Cat& param)
-: Animal(param)
+Cat&	Cat::operator=(const Cat&)
+{
+	if (DEBUG)
+		std::cout << "Cat assignment operator called" << std::endl;
+	return (*this);
+}
+
+Cat::Cat(const Cat&)
 {
 	std::cout << "Cat copy constructor called" << std::endl;
 }

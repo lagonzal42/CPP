@@ -42,7 +42,7 @@ class Animal
 		// mandatory methods
 		virtual void	makeSound(void) const = 0;
 		std::string		getType(void) const;	
-		Brain			getBrain(void) const;
+		Brain*			getBrain(void) const;
 };
 
 #endif

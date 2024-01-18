@@ -23,9 +23,9 @@ Animal::Animal(void)
 
 Animal::~Animal(void)
 {
+	delete brain;
 	if (DEBUG)
 		std::cout << "Animal destructor called" << std::endl;
-	delete brain;
 }
 
 Animal::Animal(const Animal& param)
@@ -33,7 +33,7 @@ Animal::Animal(const Animal& param)
 	if (DEBUG)
 		std::cout << "Animal copy constructor called" << std::endl;
 	type = param.getType();
-	brain = new Brain(param.getBrain());
+	brain = new Brain(*(param.getBrain()));
 }
 
 Animal&	Animal::operator=(const Animal& param)
@@ -44,7 +44,7 @@ Animal&	Animal::operator=(const Animal& param)
 	{
 		type = param.getType();
 		delete brain;
-		brain = new Brain(param.getBrain());
+		brain = new Brain(*(param.getBrain()));
 	}
 	return (*this);
 }
@@ -54,7 +54,7 @@ std::string	Animal::getType(void) const
 	return (type);
 }
 
-Brain	Animal::getBrain(void) const
+Brain*	Animal::getBrain(void) const
 {
-	return (*brain);
+	return (brain);
 }

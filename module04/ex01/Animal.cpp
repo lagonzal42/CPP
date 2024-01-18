@@ -23,9 +23,9 @@ Animal::Animal(void)
 
 Animal::~Animal(void)
 {
+	delete brain;
 	if (DEBUG)
 		std::cout << "Animal destructor called" << std::endl;
-	delete brain;
 }
 
 Animal::Animal(const Animal& param)

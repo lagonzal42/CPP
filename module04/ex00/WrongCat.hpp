@@ -1,37 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   WrongCat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lagonzal <larraingonzalez@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/28 20:50:46 by lagonzal          #+#    #+#             */
-/*   Updated: 2023/12/28 20:50:46 by lagonzal         ###   ########.fr       */
+/*   Created: 2023/12/28 20:50:39 by lagonzal          #+#    #+#             */
+/*   Updated: 2023/12/28 20:50:39 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
+#ifndef WRONGCAT_HPP
+# define WRONGCAT_HPP
 
-#include "Animal.hpp"
+#include "WrongAnimal.hpp"
 
-class Dog : public Animal
+class WrongCat : public WrongAnimal
 {
     public:
-        // Constructor
-        Dog(void);
+    	// Constructor
+		WrongCat(void);
 
-        // Destructor
-        ~Dog(void);
-
+		// Destructor
+		~WrongCat(void);
+        
         // Copy constructor
-        Dog(const Dog& param);
+        WrongCat(const WrongCat& param);
 
-        Dog&    operator=(const Dog& param);
+        // = operator override
+        WrongCat&    operator=(const WrongCat& param);
 
-
-        // mandatory
-        void makeSound(void) const;
 };
 
 #endif

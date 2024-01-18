@@ -27,6 +27,9 @@ class Dog : public Animal
         // Copy constructor
         Dog(const Dog& param);
 
+        Dog&	operator=(const Dog& param);
+
+
         // mandatory
         void makeSound(void) const;
 };

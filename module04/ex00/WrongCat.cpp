@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   WrongCat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lagonzal <larraingonzalez@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,42 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "WrongCat.hpp"
 #include <iostream>
 
-Cat::Cat(void)
+WrongCat::WrongCat(void)
 {
 	if (DEBUG)
-		std::cout << "Cat constructor called" << std::endl;
-	type = "cat";
+		std::cout << "WrongCat constructor called" << std::endl;
+	type = "WrongCat";
 }
 
-Cat::~Cat(void)
+WrongCat::~WrongCat(void)
 {
 	if (DEBUG)
-		std::cout << "Cat destructor called" << std::endl;
-	
+		std::cout << "WrongCat destructor called" << std::endl;
+
 }
 
-Cat::Cat(const Cat& param)
-: Animal(param)
+WrongCat::WrongCat(const WrongCat&)
 {
-	std::cout << "Cat copy constructor called" << std::endl;
-}
-
-Cat&	Cat::operator=(const Cat& param)
-{
-	if (DEBUG)
-		std::cout << "Animal assignment operator called" << std::endl;
-	if (&param != this)
-	{
-		delete brain;
-		brain = new Brain(param.getBrain());
-	}
-	return (*this);
-}
-
-void	Cat::makeSound(void) const
-{
-	std::cout << "[MEOW, MEOW]" << std::endl;
+	std::cout << "WrongCat copy constructor called" << std::endl;
 }

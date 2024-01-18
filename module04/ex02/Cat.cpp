@@ -33,6 +33,18 @@ Cat::Cat(const Cat& param)
 	std::cout << "Cat copy constructor called" << std::endl;
 }
 
+Cat&	Cat::operator=(const Cat& param)
+{
+	if (DEBUG)
+		std::cout << "Animal assignment operator called" << std::endl;
+	if (&param != this)
+	{
+		delete brain;
+		brain = new Brain(*(param.getBrain()));
+	}
+	return (*this);
+}
+
 void	Cat::makeSound(void) const
 {
 	std::cout << "[MEOW, MEOW]" << std::endl;

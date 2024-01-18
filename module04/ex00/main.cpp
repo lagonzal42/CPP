@@ -13,6 +13,7 @@
 #include "Dog.hpp"
 #include "Cat.hpp"
 #include <iostream>
+#include "WrongCat.hpp"
 
 int main()
 {
@@ -26,7 +27,14 @@ int main()
     j->makeSound();
     meta->makeSound();
 
+    const WrongAnimal* w = new WrongAnimal();
+    const WrongAnimal* wc = new WrongCat();
+    w->makeSound();
+    wc->makeSound();
+
     delete meta;
+    delete wc;
+    delete w;
     delete j;
     delete i;
     return 0;
