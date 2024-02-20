@@ -1,10 +1,10 @@
-NAME = Serializer
+NAME = IdentityProblems
 
 CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 
-SRCS = main.cpp ScalarConverter.cpp
+SRCS = main.cpp A.cpp B.cpp C.cpp Base.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 OBJS := $(addprefix obj/, $(OBJS))
