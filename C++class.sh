@@ -9,8 +9,8 @@ CPP="$1.cpp"
 HPP="$1.hpp"
 DEF="$1"  | tr '[:lower:]' '[:upper:]' >> "$HPP"
 
-cppheader "$CPP"
-cppheader "$HPP"
+#cppheader "$CPP"
+#cppheader "$HPP"
 
 # header definition
 
