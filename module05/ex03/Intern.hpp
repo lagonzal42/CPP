@@ -33,14 +33,6 @@ class Intern
         //mandatory
         AForm*  makeForm(std::string pName, std::string pTarget);
 
-        class InvalidFormNameException : public std::exception
-        {
-            public:
-                const char* what() const throw()
-                {
-                    return ("Intern::Invalid form name");
-                }
-        };
 };
 
 
