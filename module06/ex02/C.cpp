@@ -6,7 +6,7 @@
 /*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 13:11:36 by lagonzal          #+#    #+#             */
-/*   Updated: 2024/02/20 15:25:39 by lagonzal         ###   ########.fr       */
+/*   Updated: 2024/03/12 17:40:18 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,4 @@ C::~C(void)
     std::cout << "C class type destroyed" << std::endl;
 }
 
-std::string C::identityCheck(void)
-{
-    return ("C");
-}
+

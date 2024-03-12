@@ -6,7 +6,7 @@
 /*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 13:03:20 by lagonzal          #+#    #+#             */
-/*   Updated: 2024/02/20 15:31:25 by lagonzal         ###   ########.fr       */
+/*   Updated: 2024/03/12 17:42:48 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,20 +85,38 @@ void	Base::identify(Base *p)
 
 void	Base::identify(Base& p)
 {
-	std::string identity = p.identityCheck();
-	if (identity == "A")
-		std::cout << "The original class is A" << std::endl;
-	else if (identity == "B")
-		std::cout << "The original class is B" << std::endl;
-	else if (identity == "C")
-		std::cout << "The original class is C" << std::endl;
-	else if (identity == "Base")
-		std::cout << "The original class is Base" << std::endl;
-	else
-		std::cout << "The original class is unknown" << std::endl;
+	try
+	{
+		A a = dynamic_cast<A&>(p);
+		std::cout << "Class is A" << std::endl;
+		return ;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	try
+	{
+		B b = dynamic_cast<B&>(p);
+		std::cout << "Class is B" << std::endl;
+		return ;
+				
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	try
+	{
+		C c = dynamic_cast<C&>(p);
+		std::cout << "Class is C" << std::endl;
+		return ;
+				
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
 }
 
-std::string Base::identityCheck(void)
-{
-	return ("Base");
-}
