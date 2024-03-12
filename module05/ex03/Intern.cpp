@@ -47,7 +47,6 @@ AForm*	Intern::makeForm(std::string pName, std::string pTarget)
 	int i;
 	AForm* form;
 
-	std::cout << sizeof(forms) / sizeof(forms[0]) << std::endl;
 	for (i = 0 ; i < (int)(sizeof(forms) / sizeof(forms[0])); i++)
 	{
 		if (forms[i] == pName)
@@ -65,7 +64,7 @@ AForm*	Intern::makeForm(std::string pName, std::string pTarget)
 			form = new RobotomyRequestForm(pTarget);
 			break;
 		default:
-			throw (Intern::InvalidFormNameException());		
+			std::cerr << "Invalid Form name" << std::endl;	
 			break;
 	}
 	return (form);
