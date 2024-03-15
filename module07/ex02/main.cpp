@@ -4,7 +4,13 @@
 #include <cstdlib>
 
 #define MAX_VAL 750
-int main(int, char**)
+
+// int main(int, char**)
+// {
+//     std::cout << "This is a test" << std::endl;
+// }
+
+int f(void)
 {
     Array<int> numbers(MAX_VAL);
     int* mirror = new int[MAX_VAL];
@@ -15,7 +21,6 @@ int main(int, char**)
         numbers[i] = value;
         mirror[i] = value;
     }
-    //SCOPE
     {
         Array<int> tmp = numbers;
         Array<int> test(tmp);
@@ -28,6 +33,7 @@ int main(int, char**)
             return 1;
         }
     }
+//getchar();
     try
     {
         numbers[-2] = 0;
@@ -49,6 +55,13 @@ int main(int, char**)
     {
         numbers[i] = rand();
     }
-    delete [] mirror;//
+    delete [] mirror;
     return 0;
+}
+
+int main(void)
+{
+    f();
+    fflush(stdin);
+    getchar();
 }

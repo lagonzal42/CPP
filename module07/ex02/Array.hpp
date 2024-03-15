@@ -65,7 +65,10 @@ template <typename T>
 Array<T>::Array(const Array& param)
 {
 	std::cout << "Copy constructor called" << std::endl;
-	*this = param;
+	this->_size = param.size();
+	this->_ptr = new T [this->_size];
+	for (size_t x = 0; x < this->_size; x++)
+			_ptr[x] = param[x]; 
 }
 
 template <typename T>
@@ -88,7 +91,7 @@ template <typename T>
 Array<T>::~Array(void)
 {
 	std::cout << "Default destructor called" << std::endl;
-	if (_size > 0)
+	if (_ptr)
 		delete[] _ptr;
 }
 
@@ -97,6 +100,8 @@ Array<T>&	Array<T>::operator=(const Array<T>& param)
 {
 	if (this != &param)
 	{
+		if (_ptr)
+			delete[] _ptr;
 		this->_size = param.size();
 		this->_ptr = new T [this->_size];
 		for (size_t x = 0; x < this->_size; x++)
@@ -108,7 +113,7 @@ Array<T>&	Array<T>::operator=(const Array<T>& param)
 template <typename T>
 T&		Array<T>::operator[](int index) const
 {
-	if (index < 0 || index >= (int)this->_size)
+	if (index < 0 || (size_t)index > this->_size - 1)
 		throw(IndexOutOfBoundsException());
 	return (this->_ptr[index]);
 }
