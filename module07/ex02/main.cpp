@@ -10,7 +10,7 @@
 //     std::cout << "This is a test" << std::endl;
 // }
 
-int f(void)
+int main(int, char**)
 {
     Array<int> numbers(MAX_VAL);
     int* mirror = new int[MAX_VAL];
@@ -57,11 +57,4 @@ int f(void)
     }
     delete [] mirror;
     return 0;
-}
-
-int main(void)
-{
-    f();
-    fflush(stdin);
-    getchar();
 }
