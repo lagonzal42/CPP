@@ -1,4 +1,4 @@
-NAME = Serializer
+NAME = convert
 
 CC = c++
 

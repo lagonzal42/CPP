@@ -6,7 +6,7 @@
 /*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 13:06:05 by lagonzal          #+#    #+#             */
-/*   Updated: 2024/02/20 15:26:13 by lagonzal         ###   ########.fr       */
+/*   Updated: 2024/03/12 17:39:58 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ class A : public Base
 	public:
 		A(void);
 		~A(void);
-		std::string identityCheck(void);
 };
 
 #endif

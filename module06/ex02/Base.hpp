@@ -6,7 +6,7 @@
 /*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 13:03:25 by lagonzal          #+#    #+#             */
-/*   Updated: 2024/02/20 15:25:20 by lagonzal         ###   ########.fr       */
+/*   Updated: 2024/03/12 17:40:10 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,5 @@ class Base
 		Base	*generate(void);
 		void	identify(Base *p);
 		void	identify(Base& p);
-		virtual	std::string identityCheck(void);
 };
 #endif

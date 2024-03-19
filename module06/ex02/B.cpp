@@ -6,7 +6,7 @@
 /*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 13:11:25 by lagonzal          #+#    #+#             */
-/*   Updated: 2024/02/20 15:08:29 by lagonzal         ###   ########.fr       */
+/*   Updated: 2024/03/12 17:40:02 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,4 @@ B::B(void)
 B::~B(void)
 {
     std::cout << "B class type destroyed" << std::endl;
-}
-
-std::string B::identityCheck(void)
-{
-    return ("B");
 }

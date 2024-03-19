@@ -6,7 +6,7 @@
 /*   By: lagonzal <lagonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 18:34:20 by lagonzal          #+#    #+#             */
-/*   Updated: 2024/02/16 18:48:29 by lagonzal         ###   ########.fr       */
+/*   Updated: 2024/03/12 16:50:59 by lagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ uintptr_t   Serializer::serialize(Data *ptr)
 
 Data*   Serializer::deserialize(uintptr_t serialized)
 {
-    return (reinterpret_cast<Data *> (serialized));
+    return (reinterpret_cast<Data *>(serialized));
 }
