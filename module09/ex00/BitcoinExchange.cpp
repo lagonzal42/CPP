@@ -94,7 +94,18 @@ bool BitcoinExchange::checkDateFormat(const std::string& date)
 				return (true);
         }
     }
-    return (false);
+	std::string year, month, day;
+	std::stringstream ss(date);
+	std::getline(ss, year, '-');
+	std::getline(ss, month, '-');
+	std::getline(ss, day, '-');
+	if (month > "12")
+		return (true);
+	if ((day > "30" && (month != "01" && month != "03" && month != "05" && month != "07" && month != "08" && month != "10" && month != "12"))
+		|| (day > "28" && month == "02" && std::atoi(year.c_str()) % 4 != 0 && std::atoi(year.c_str()) % 400 != 0)
+		|| (day > "29" && month == "02"))
+		return (true);
+	return (false);
 }
 
 void    BitcoinExchange::exchange(std::string inputPath)
@@ -116,13 +127,6 @@ void    BitcoinExchange::exchange(std::string inputPath)
 		std::stringstream	ss(line);
 		std::getline(ss, date, '|');
 		std::getline(ss, amount, '|');
-		// if (DEBUG)
-		// {
-		// 	std::cout << "line is " << line << "\n" << std::endl; 
-		// 	std::cout << "date is " << date << "\n" << std::endl; 
-		// 	std::cout << "amount is " << amount << "\n" << std::endl; 
-
-		// }
 		date.erase(date.find_last_not_of(" \n\t\r") + 1);
 		amount.erase(0, amount.find_first_not_of(" \n\t\r"));
 
