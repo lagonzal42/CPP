@@ -22,15 +22,22 @@ int main()
     span.addNumber(5);
     span.addNumber(3);
     span.addNumber(9);
-    span.addNumber(1);
+    span.addNumber(6);
     span.addNumber(6);
 
     std::cout << "Shortest span: " << span.shortestSpan() << std::endl;
     std::cout << "Longest span: " << span.longestSpan() << std::endl;
 
+
+
     try 
     {
+        Span span3(10);
+        span3.addNumbers();
+        std::cout << "Shortest span: " << span3.shortestSpan() << std::endl;
+        std::cout << "Longest span: " << span3.longestSpan() << std::endl;
         span.addNumber(7);
+        
     } 
     catch (const Span::SpanAlreadyFullException& e) 
     {

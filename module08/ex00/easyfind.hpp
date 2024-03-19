@@ -14,6 +14,7 @@
 # define EASYFIND_HPP
 
 #include <iterator>
+#include <algorithm>
 
 class ValueNotFoundException : public std::exception
 {
@@ -27,13 +28,11 @@ class ValueNotFoundException : public std::exception
 template<typename T>
 typename T::iterator easyfind(T& cont, int search)
 {
-	for (typename T::iterator it = cont.begin(); it != cont.end(); it++)
-	{
-		if (*it == search)
-			return (it);
-	}
-	
-	throw ValueNotFoundException();
+    typename T::iterator it = std::find(cont.begin(), cont.end(), search);
+    if (it != cont.end())
+        return it;
+    else
+        throw ValueNotFoundException();
 }
 
 #endif //easyfind.hpp

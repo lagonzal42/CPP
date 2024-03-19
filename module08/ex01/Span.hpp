@@ -18,7 +18,7 @@
 class Span
 {
 	private:
-		unsigned int		_N;
+		unsigned int		_n;
 		std::vector<int>	_numbers;
 		
 		Span(void);
@@ -30,6 +30,7 @@ class Span
 		Span&	operator=(const Span& param);
 
 		void	addNumber(int in);
+		void	addNumbers();
 		int		shortestSpan(void);
 		int		longestSpan(void);
 
