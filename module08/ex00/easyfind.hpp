@@ -15,14 +15,16 @@
 
 #include <iterator>
 #include <algorithm>
+#include <queue>
+#include <stack>
 
 class ValueNotFoundException : public std::exception
 {
-	public:
-		const char * what() const throw()
-		{
-			return ("The value wasnt found");
-		}
+    public:
+        const char * what() const throw()
+        {
+            return ("The value wasn't found");
+        }
 };
 
 template<typename T>
@@ -34,5 +36,34 @@ typename T::iterator easyfind(T& cont, int search)
     else
         throw ValueNotFoundException();
 }
+
+// template<>
+// bool easyfind<std::stack<int> >(std::stack<int>& cont, int search)
+// {
+//     std::stack<int> copy = cont;
+
+//     while (cont.size() > 0)
+//     {
+//         if (copy.top() == search)
+//             return (true);
+//         copy.pop();
+//     }
+//     return (false);
+// }
+
+// template<>
+// bool easyfind<std::queue<int> >(std::queue<int>& cont, int search)
+// {
+//     std::queue<int> copy = cont;
+
+//     while (cont.size() > 0)
+//     {
+//         if (copy.front() == search)
+//             return (true);
+//         copy.pop();
+//     }
+//     return (false);
+// }
+
 
 #endif //easyfind.hpp

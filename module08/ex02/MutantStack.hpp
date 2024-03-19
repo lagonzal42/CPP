@@ -24,13 +24,8 @@ class MutantStack
 		std::deque<T> 			_ms;
 	
 	public:
-<<<<<<< HEAD
-		typedef typename std::deque<T>::iterator	iterator;
-        typedef typename std::deque<T>::const_iterator const_iterator;
-=======
 		typedef typename std::deque<T>::iterator		iterator;
-        typedef typename std::deque<T>::const_iterator	const_iterator; // Add this line
->>>>>>> 3da76bd9f48f6f53868ea84173b75278fd36983a
+        typedef typename std::deque<T>::const_iterator	const_iterator;
 
 		
 		MutantStack(void);
