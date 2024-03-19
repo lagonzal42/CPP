@@ -1,4 +1,4 @@
-NAME = EasyFind
+NAME = BitcoinExchange
 
 CC = c++
 

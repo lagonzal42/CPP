@@ -23,10 +23,15 @@ bool    BitcoinExchange::createDB(void)
 		std::cerr << "Error while opening data.csv" << std::endl;
 		return (1);
 	}
-
+	std::getline(dataIn, line);
+	if (line != "date,exchange_rate")
+	{
+		std::cerr << "Error in line " << line << std::endl;
+		return (1);
+	}
 	while (std::getline(dataIn, line))
 	{
-		std::stringstream	ss;(line);
+		std::stringstream	ss(line);
 		std::getline(ss, date, ',');
 		std::getline(ss, value, ',');
 		
@@ -59,7 +64,7 @@ bool BitcoinExchange::checkNumFormat(const std::string& value)
 {
 	bool point = false;
 
-	for (int i = 0; i < value.size(); i++)
+	for (size_t i = 0; i < value.size(); i++)
 	{
 		if (!std::isdigit(value[i]))
 		{
@@ -74,28 +79,23 @@ bool BitcoinExchange::checkNumFormat(const std::string& value)
 
 bool BitcoinExchange::checkDateFormat(const std::string& date)
 {
-    if (date.size() != 10) 
-		return false;
-    for (int i = 0; i < date.size(); ++i)
+    if (date.size() != 10)
+		return (true);
+    for (size_t i = 0; i < date.size(); ++i)
 	{
         if (i == 4 || i == 7) 
 		{
             if (date[i] != '-')
-				return false;
+				return (true);
         } 
 		else 
 		{
             if (!isdigit(date[i]))
-				return false;
+				return (true);
         }
     }
-    return true;
+    return (false);
 }
-
-
-
-
-
 
 void    BitcoinExchange::exchange(std::string inputPath)
 {
@@ -104,22 +104,34 @@ void    BitcoinExchange::exchange(std::string inputPath)
 
 	std::string line, date, amount;
 	std::ifstream inputFile(inputPath);
+	
+	std::getline(inputFile, line);
+	if (line != "date | value")
+	{
+		std::cout << "Error in line " << line << std::endl;
+		return ;
+	}
 	while (std::getline(inputFile, line))
 	{
-		std::stringstream	ss;(line);
+		std::stringstream	ss(line);
 		std::getline(ss, date, '|');
 		std::getline(ss, amount, '|');
-		
+		// if (DEBUG)
+		// {
+		// 	std::cout << "line is " << line << "\n" << std::endl; 
+		// 	std::cout << "date is " << date << "\n" << std::endl; 
+		// 	std::cout << "amount is " << amount << "\n" << std::endl; 
+
+		// }
+		date.erase(date.find_last_not_of(" \n\t\r") + 1);
+		amount.erase(0, amount.find_first_not_of(" \n\t\r"));
+
 		double numValue = std::atof(amount.c_str());
 		
-		if (DEBUG)
-			std::cout << "Input date is " << date << " value is " << amount << std::endl;
-		if (line == "date | value ")
-		;
-		else if (line[11] != '|')
-			std::cout << "Error: bad input => " << line << std::endl;
+		if (line[11] != '|')
+			std::cerr << "Error: bad input => " << line << std::endl;
 		else if (BitcoinExchange::checkDateFormat(date))
-			std::cerr << "Error: date is wrong" << date << std::endl;
+			std::cerr << "Error: date is wrong " << date << std::endl;
 		else if (numValue > 1000)
 			std::cerr << "Error: too large number." << std::endl;
 		else if (numValue < 0 )
