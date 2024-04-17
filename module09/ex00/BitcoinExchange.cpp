@@ -64,6 +64,8 @@ bool BitcoinExchange::checkNumFormat(const std::string& value)
 {
 	bool point = false;
 
+	if (value.size() == 0)
+		return (1);
 	for (size_t i = 0; i < value.size(); i++)
 	{
 		if (!std::isdigit(value[i]))
@@ -103,7 +105,7 @@ bool BitcoinExchange::checkDateFormat(const std::string& date)
 		return (true);
 	if ((day > "30" && (month != "01" && month != "03" && month != "05" && month != "07" && month != "08" && month != "10" && month != "12"))
 		|| (day > "28" && month == "02" && std::atoi(year.c_str()) % 4 != 0 && std::atoi(year.c_str()) % 400 != 0)
-		|| (day > "29" && month == "02"))
+		|| (day > "29" && month == "02") || day < "01" || month < "01" || year < "0001")
 		return (true);
 	return (false);
 }
