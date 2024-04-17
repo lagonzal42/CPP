@@ -10,7 +10,6 @@ Welcome to the 42 CPP Modules repository! This repository contains a series of C
 - [Features](#features)
 - [Getting Started](#getting-started)
 - [Usage](#usage)
-- [Contributors](#contributors)
 - [License](#license)
 - [Acknowledgements](#acknowledgements)
 
